@@ -1,20 +1,27 @@
 const mongoose = require('mongoose')
 const fs = require('fs')
 const path = require('path')
+const Admin = require('./admin')
 
-const info = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../privateInfo.json')).toString()
-)
+mongoose.connect('mongodb://localhost:27017/zalegzl')
 
-const account = info.adminAccount
-const pwd = info.adminPassword
-
-mongoose.connect(
-  `mongodb://${account}:${pwd}@119.29.145.190:27017/zalegzl?authSource=admin`
-)
+// const info = JSON.parse(
+//   fs.readFileSync(path.resolve(__dirname, '../privateInfo.json')).toString()
+// )
+const account = `admin`
+const password = `password`
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'mongodb connection error:'))
 db.once('open', function() {
-  console.log('mongodb connection success!')
+    //    创建管理员
+
+    const admin = new Admin({ account, password })
+    admin.save(function(err, admin) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(admin)
+        }
+    })
 })

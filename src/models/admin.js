@@ -4,10 +4,10 @@ const mongoose = require('mongoose')
 const crypto = require('crypto')
 const Schema = mongoose.Schema
 
-const info = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../privateInfo.json')).toString()
-)
-const secret = info.secret
+// const info = JSON.parse(
+//   fs.readFileSync(path.resolve(__dirname, '../privateInfo.json')).toString()
+// )
+const secret = `440582199608064315guozelingzale`
 
 // 明文 ==> 加密后的字符串
 const hash = plainText =>

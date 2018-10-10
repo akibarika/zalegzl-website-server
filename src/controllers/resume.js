@@ -4,10 +4,10 @@ const Resume = require('../models/resume')
 const marked = require('marked')
 const { markdownToHtmlRender, APIError } = require('../utils')
 
-const info = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '../privateInfo.json')).toString()
-)
-const adminAccount = info.adminAccount
+// const info = JSON.parse(
+//   fs.readFileSync(path.resolve(__dirname, '../privateInfo.json')).toString()
+// )
+const adminAccount = `admin`
 
 // 获取简历
 const getResume = async (ctx, next) => {

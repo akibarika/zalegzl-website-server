@@ -15,11 +15,11 @@ const { restify } = require('./middlewares')
 const app = new Koa()
 
 // 设置网站私有信息
-const info = JSON.parse(
-  fs.readFileSync(__dirname + '/privateInfo.json').toString()
-)
+// const info = JSON.parse(
+//   fs.readFileSync(__dirname + '/privateInfo.json').toString()
+// )
 app.data = {}
-app.data.secret = info.secret
+app.data.secret = `440582199608064315guozelingzale`
 
 // 静态文件中间件
 app.use(serve(__dirname + '/public', { maxage: 7 * 24 * 60 * 60 * 1000 }))
